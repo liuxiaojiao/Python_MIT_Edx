@@ -1,12 +1,22 @@
 ## Problem 3
-s = 'abcbcd'l=0current =0
+## Assume s is a string of lower case characters.Write a program that prints the longest substring of s in which the letters occur 
+## in alphabetical order. 
+## For example, if s = 'azcbobobegghakl', then your program should printLongest substring in alphabetical order is: beggh
+## In the case of ties, print the first substring. For example, if s = 'abcbcd', 
+## then your program should printLongest substring in alphabetical order is: abc
+
+
+s = 'abcbcd'
+l=0
+current =0
+
 for i in range(0,len(s)-1,1):    
-  if ord(s[i]) <= ord(s[i+1]):        
-    l = l + 1        
-    if l > current:            
-      current = l             
-      index = i+1    
+    if ord(s[i]) <= ord(s[i+1]):        
+        l = l + 1        
+        if l > current:            
+            current = l             
+            index = i+1    
     else:        
-      l = 0
+        l = 0
 
 print(s[(index-current):index+1])
