@@ -1,0 +1,12 @@
+## Problem 3
+s = 'abcbcd'l=0current =0
+for i in range(0,len(s)-1,1):    
+  if ord(s[i]) <= ord(s[i+1]):        
+    l = l + 1        
+    if l > current:            
+      current = l             
+      index = i+1    
+    else:        
+      l = 0
+
+print(s[(index-current):index+1])
