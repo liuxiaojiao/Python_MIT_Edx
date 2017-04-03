@@ -1,1 +1,23 @@
-l = 0h = 100s = ''guesstime = 1while s != 'c':     ans=(l+h)/2    print(ans)    s = raw_input("if the number is h or l than yours: ")    if s.lower() not in ('h','l','c'):        print("invalid input - try again")        s = raw_input("if the number is h or l than yours: ")     if s.lower() == 'c':        break    elif s.lower() == 'h':        h = ans    else:        l = ans    guesstime += 1    print (str(ans) + ' is the number in your mind, and I use ' + str(guesstime)+' times to get it.')
+
+
+l = 0
+h = 100
+s = ''
+guesstime = 1
+
+while s != 'c':     
+    ans=(l+h)/2    
+    print(ans)    
+    s = raw_input("if the number is h or l than yours: ")    
+    if s.lower() not in ('h','l','c'):        
+        print("invalid input - try again")        
+        s = raw_input("if the number is h or l than yours: ")     
+    if s.lower() == 'c':        
+        break    
+    elif s.lower() == 'h':        
+        h = ans    
+    else:        
+        l = ans    
+    guesstime += 1    
+    
+print (str(ans) + ' is the number in your mind, and I use ' + str(guesstime)+' times to get it.')
