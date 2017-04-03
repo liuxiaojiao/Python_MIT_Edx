@@ -2,26 +2,28 @@
 ## The computer makes guesses, and you give it input - is its guess too high or too low? 
 ## Using bisection search, the computer will guess the user's secret number!print("Think a number between 0 to 100")
 
-print("Think a number between 0 - 100")
-
+print ("Please think of a number between 0 and 100!")
 l = 0
 h = 100
 s = ''
 guesstime = 1
 
-while s != 'c':     
-    ans=(l+h)/2    
-    print(ans)    
-    s = raw_input("if the number is h or l than yours: ")    
-    if s.lower() not in ('h','l','c'):        
-        print("invalid input - try again")        
-        s = raw_input("if the number is h or l than yours: ")     
-    if s.lower() == 'c':        
-        break    
-    elif s.lower() == 'h':        
-        h = ans    
-    else:        
-        l = ans    
-    guesstime += 1    
+while s != 'c': 
+    ans=int((l+h)/2)
+    print("Is your secret number "+str(ans)+"?")
     
-print (str(ans) + ' is the number in your mind, and I use ' + str(guesstime)+' times to get it.')
+    s = raw_input("Enter 'h' to indicate the guess is too high. Enter 'l' to indicate the guess is too low. Enter 'c' to indicate I guessed correctly.")
+    
+    if s.lower() not in ('h','l','c'):
+        print("Sorry, I did not understand your input.")
+       
+    else:
+        if s.lower() == 'c':
+            break
+        elif s.lower() == 'h':
+            h = ans
+        else:
+            l = ans
+        guesstime += 1
+    
+print ('Game over. Your secret number was:' + str(ans))
