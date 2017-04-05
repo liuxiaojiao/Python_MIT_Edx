@@ -1,0 +1,26 @@
+## Checking whether a char is in a string using bisection checking method
+
+def isIn(char, aStr):    
+'''    char: a single character    
+       aStr: an alphabetized string        
+       returns: True if char is in aStr; False otherwise    
+       
+       '''    
+   
+    if aStr == '':        
+        return False        
+        
+    if len(aStr) == 1:        
+        return char == aStr[0]            
+    
+    aStr = sorted(aStr)   ## sort by the string in alphabetical order 
+    midIndex = len(aStr)//2           
+    
+    if char == aStr[midIndex]: ## get the middle of the char       
+        return True        
+    
+    elif char < aStr[midIndex]:        
+        return isIn(char,aStr[:midIndex])  ## use function recursively
+        
+    else:        
+        return isIn(char,aStr[midIndex+1:])    
