@@ -11,7 +11,7 @@ def isIn(char, aStr):   
         return False        
         
     if len(aStr) == 1:        
-        return char == aStr[0]            
+        return char == aStr[0] ## aStr is a list containing only one element, while char is a string length = 1           
     
     aStr = sorted(aStr)   ## sort by the string in alphabetical order 
     midIndex = len(aStr)//2           
