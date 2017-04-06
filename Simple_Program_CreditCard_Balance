@@ -1,1 +1,10 @@
-def Updated_balance(balance,month,annualInterestRate,monthlyPaymentRate):    if month == 1:        Monthly_unpaid_balance = (balance - monthlyPaymentRate*balance)* (1+annualInterestRate/12.0)    else:        Monthly_unpaid_balance = (Updated_balance(balance,month-1,annualInterestRate,monthlyPaymentRate)-monthlyPaymentRate*Updated_balance(balance,month-1,annualInterestRate,monthlyPaymentRate))*(1+annualInterestRate/12.0)        return Monthly_unpaid_balanceoutstanding_unpaid_balance = round(Monthly_unpaid_balance,2)print outstanding_unpaid_balance
+def Updated_balance(balance,month,annualInterestRate,monthlyPaymentRate):    
+    if month == 1:        
+        Monthly_unpaid_balance = (balance - monthlyPaymentRate*balance)* (1+annualInterestRate/12.0)    
+    else:       
+        Monthly_unpaid_balance = (Updated_balance(balance,month-1,annualInterestRate,monthlyPaymentRate)-monthlyPaymentRate*Updated_balance(balance,month-1,annualInterestRate,monthlyPaymentRate))*(1+annualInterestRate/12.0)        
+    
+    return Monthly_unpaid_balance
+
+outstanding_unpaid_balance = round(Monthly_unpaid_balance,2)
+print(outstanding_unpaid_balance)
