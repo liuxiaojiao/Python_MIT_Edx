@@ -1,0 +1,15 @@
+def Updated_balance(balance,month,annualInterestRate,monthly_payment):
+    if month == 1:
+        Monthly_unpaid_balance = (balance - monthly_payment)* (1+annualInterestRate/12.0)
+    else:
+        Monthly_unpaid_balance = (Updated_balance(balance,month-1,annualInterestRate,monthly_payment)-monthly_payment)*(1+annualInterestRate/12.0)
+    
+    return Monthly_unpaid_balance
+
+def compute_monthly_payment(balance,annualInterestRate):
+    monthly_payment = 0
+    
+    while Updated_balance(balance,12,annualInterestRate,monthly_payment) > 0:
+        monthly_payment = monthly_payment +1
+    
+    return monthly_payment
