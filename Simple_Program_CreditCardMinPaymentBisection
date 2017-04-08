@@ -32,3 +32,9 @@ def compute_monthly_payment(balance,annualInterestRate):
         ans = (low + high)/2.0
     
     return ans
+
+
+
+compute_monthly_payment(60000,0.12)
+## Output: 5278.145776075256 
+## monthly minimum payment is $5,278.15 if the balance at the beginning of the year is 60,000 and annual interest is 0.12
