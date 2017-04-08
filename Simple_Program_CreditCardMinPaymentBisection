@@ -1,0 +1,34 @@
+## Compute the monthly minimum payment of credit card
+## Can use recursion to find the minimum payment starting from 0, but it's computationally complicated
+## Using bisection search for the minimum payment to avoid exhaustively trying
+
+def Updated_balance(balance,month,annualInterestRate,monthly_payment):
+    ## A function to compute updated balance at month n (for annual case, simply define month = 12)
+    if month == 1:
+        Monthly_unpaid_balance = (balance - monthly_payment)* (1+annualInterestRate/12.0)
+    else:
+        ## Using recursion to simplify the computation
+        Monthly_unpaid_balance = (Updated_balance(balance,month-1,annualInterestRate,monthly_payment)-monthly_payment)*(1+annualInterestRate/12.0)
+    
+    return Monthly_unpaid_balance
+
+def compute_monthly_payment(balance,annualInterestRate):
+    ## A function to find the monthly minimum payment using bisection method 
+    ## Lower bound: If there was no interest, the debt can be paid off by monthly payments of one-twelfth of the original balance, 
+    ## so we must pay at least this much every month -  One-twelfth of the original balance is a good lower bound.
+    ## Upper bound: a good upper bound for the monthly payment would be one-twelfth of the balance, 
+    ## after having its interest compounded monthly for an entire year, which is (Balance x (1 + Monthly interest rate)**12) / 12.0.
+    
+    low = balance/12.0
+    high = (balance * (1 + annualInterestRate/12.0)**12) / 12.0
+    ans = (low + high)/2.0
+    epsilon = 0.01 
+
+    while abs(Updated_balance(balance,12,annualInterestRate,ans)) > epsilon:
+        if Updated_balance(balance,12,annualInterestRate,ans) > 0:
+            low = ans
+        else:
+            high = ans
+        ans = (low + high)/2.0
+    
+    return ans
